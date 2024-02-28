@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            width: 100px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        數字-1: <input class="num-1" type="number">
+    </p>
+    <p>
+        數字-2: <input class="num-2" type="number">
+    </p>
+    <p>
+        <button class="plus">+</button>
+        <button class="minus">-</button>
+        <button class="multiplier">*</button>
+        <button class="divider">/</button>
+        <button class="clear">清空</button>
+    </p>
+    <div>
+        結果: <span class="result"></span>
+    </div>
+    <script>
+
+        let numTop = document.querySelector('.num-1');
+        let numBot = document.querySelector('.num-2');
+
+        let plus = document.querySelector('.plus');
+        let minus = document.querySelector('.minus');
+        let multiplier = document.querySelector('.multiplier');
+        let divider = document.querySelector('.divider');
+        let clear = document.querySelector('.clear');
+
+        let result = document.querySelector('.result');
+
+        clear.addEventListener('click', function(){
+            numTop.value = '';
+            numBot.value = '';
+            result.innerHTML = '';
+        });
+
+        plus.addEventListener('click', function(){
+            nullNum();
+            let resultPlus = (numTop.value * 1 + numBot.value * 1);
+            result.innerHTML = resultPlus;
+        });
+
+        minus.addEventListener('click',function(){
+            nullNum();
+            let resultMinus = (numTop.value *1 - numBot.value * 1);
+            result.innerHTML = resultMinus;
+        });
+
+        multiplier.addEventListener('click',function(){
+            nullNum();
+            let resultMultiplier = ((numTop.value * 1) * (numBot.value * 1));
+            result.innerHTML = resultMultiplier;
+        });
+
+        divider.addEventListener('click',function(){
+            nullNum();
+            let resultDivider = ((numTop.value * 1) / (numBot.value * 1));
+            if (isNaN(resultDivider)){
+                result.innerHTML = 0
+            }else{
+            result.innerHTML = resultDivider.toFixed(2);
+            }
+        }); 
+
+        function nullNum(){
+            if (!numTop.value  || !numBot.value){ 
+                alert('寫數字');
+                return;
+            }
+        }
+        
+
+    </script>
+</body>
+</html>
